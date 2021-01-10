@@ -8,7 +8,9 @@ import lombok.ToString;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor @ToString
@@ -16,6 +18,8 @@ public class Liste implements Serializable {
     @Id @GeneratedValue
     private Long id;
     private Date date;
-    private String state;
+    private String status;
+    @OneToMany(mappedBy = "liste")
+    private Collection<Details> details;
 
 }
