@@ -5,17 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor @ToString
-public class Categorie implements Serializable {
+@Data @NoArgsConstructor @AllArgsConstructor @ToString
+public class Produit implements Serializable {
     @Id @GeneratedValue
-    private  Long id;
+    private Long id;
     @Column(nullable = false,length = 25)
     private String name;
+    @ManyToOne
+    private Famille famille;
+    @ManyToOne
+    private Categorie categorie;
 }
